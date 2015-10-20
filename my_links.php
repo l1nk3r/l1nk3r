@@ -26,7 +26,6 @@ echo '<div id="header">';
 include 'style/header.php';
 login_fields();?>
 </div></nav>
-
 <?php 
 $u = $_SESSION['username'];
 
@@ -40,8 +39,6 @@ $u = $_SESSION['username'];
 			include 'includes/db_connect.php';?>
            	<div id="main">
            <center><h1>Links I've posted</h1></center>
-        
-		
 		<?php 
 		  $query = "SELECT * FROM link WHERE username = '$u'";
         $list = mysqli_query($conn, $query);
@@ -58,17 +55,10 @@ $link_user = mysqli_query($conn, $query2);
 $link_name = mysqli_fetch_array($link_user);
 $name = $link_name['username'];
 $avatar = $link_name['avatar'];
-
-$timeAgoObject = new convertToAgo; // Create an object for the time conversion functions
-
-// Query your database here and get timestamp
-
+$timeAgoObject = new convertToAgo;
 $ts = $created;
-
 $convertedTime = ($timeAgoObject -> convert_datetime($ts)); // Convert Date Time
-
 $when = ($timeAgoObject -> makeAgo($convertedTime)); // Then convert to ago time 
-
 ?>
 		 
 
